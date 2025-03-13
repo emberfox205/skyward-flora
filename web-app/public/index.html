@@ -1,0 +1,70 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="public/js/chart-device-data.js" type="text/javascript" charset="utf-8"></script>
+    <link href="public/css/style.css" rel="stylesheet" />
+
+    <title>IoT Sensor Data Dashboard</title>
+</head>
+
+<body>
+    <h1 class="flexHeader">
+        <span>
+            <span id="deviceCount">0 devices</span>
+            <select id="listOfDevices" class="select_box"></select>
+        </span>
+        <span>IoT Sensor Real-time Data</span>
+    </h1>
+    
+    <!-- Temperature Chart Section -->
+    <div class="chart-container">
+        <div class="chart-area">
+            <canvas id="tempChart"></canvas>
+        </div>
+        <div class="data-display">
+            <div class="data-card">
+                <h3>Temperature</h3>
+                <div id="tempValue" class="current-value">-- °C</div>
+                <div id="tempTime" class="timestamp">Last update: --</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Humidity Chart Section -->
+    <div class="chart-container">
+        <div class="chart-area">
+            <canvas id="humidityChart"></canvas>
+        </div>
+        <div class="data-display">
+            <div class="data-card">
+                <h3>Humidity</h3>
+                <div id="humidityValue" class="current-value">-- %</div>
+                <div id="humidityTime" class="timestamp">Last update: --</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Soil Moisture Chart Section -->
+    <div class="chart-container">
+        <div class="chart-area">
+            <canvas id="soilMoistureChart"></canvas>
+        </div>
+        <div class="data-display">
+            <div class="data-card">
+                <h3>Soil Moisture</h3>
+                <div id="soilMoistureValue" class="current-value">-- %</div>
+                <div id="soilMoistureTime" class="timestamp">Last update: --</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
