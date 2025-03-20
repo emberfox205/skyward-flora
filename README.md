@@ -1,4 +1,5 @@
 # skyward-flora
+![Static Badge](https://img.shields.io/badge/Python-3.10.0-blue?style=flat&logo=Python&logoColor=white)
 
 Prototype for a solution to read and transfer data between plant sensors and the cloud.
 
