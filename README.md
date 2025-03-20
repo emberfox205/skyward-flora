@@ -4,6 +4,8 @@ Prototype for a solution to read and transfer data between plant sensors and the
 
 ---
 
+
+
 ## Description
 
 ### Embedded firmware
@@ -25,4 +27,5 @@ The `web-app` directory is a FastAPI application that reads messages sent to the
 ## Credits
 
 - [azure-sdk-C-arduino](https://github.com/Azure/azure-sdk-for-c-arduino)
+- [azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python/blob/azure-eventhub_5.14.0/sdk/eventhub/azure-eventhub/samples/async_samples/iot_hub_connection_string_receive_async.py)
 - [web-apps-node-iot-hub-data-visualization](https://github.com/Azure-Samples/web-apps-node-iot-hub-data-visualization)
