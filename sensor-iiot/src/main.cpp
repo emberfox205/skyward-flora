@@ -61,6 +61,9 @@ static const char *password = IOT_CONFIG_WIFI_PASSWORD;
 static const char *host = IOT_CONFIG_IOTHUB_FQDN;
 static const char *mqtt_broker_uri = "mqtts://" IOT_CONFIG_IOTHUB_FQDN;
 static const char *device_id = IOT_CONFIG_DEVICE_ID;
+// Signals for the relay
+static const char *on_signal = ON_SIGNAL;
+static const char *off_signal = OFF_SIGNAL;
 static const int mqtt_port = AZ_IOT_DEFAULT_MQTT_CONNECT_PORT;
 
 // Memory allocated for the sample's variables and structures.
@@ -202,7 +205,8 @@ static esp_err_t mqtt_event_handler(esp_mqtt_event_handle_t event)
         break;
     case MQTT_EVENT_DATA:
         Logger.Info("MQTT event MQTT_EVENT_DATA");
-
+        // event is a struct containing all data about incoming messages
+        // definition found in /include/mqtt_client.h
         for (i = 0; i < (INCOMING_DATA_BUFFER_SIZE - 1) && i < event->topic_len; i++)
         {
             incoming_data[i] = event->topic[i];
@@ -215,6 +219,14 @@ static esp_err_t mqtt_event_handler(esp_mqtt_event_handle_t event)
             incoming_data[i] = event->data[i];
         }
         incoming_data[i] = '\0';
+        // Activate relay based on incoming message
+        // Replace messages in platform.ini 
+        if (strcmp(incoming_data, on_signal) == 0) {
+            digitalWrite(RELAY_PIN, HIGH);
+        }
+        else if (strcmp(incoming_data, off_signal) == 0) {
+            digitalWrite(RELAY_PIN, LOW);
+        }
         Logger.Info("Data: " + String(incoming_data));
 
         break;
@@ -470,7 +482,13 @@ static void sendTelemetry()
 
 // Arduino setup and loop main functions.
 
-void setup() { establishConnection(); }
+void setup() { 
+    establishConnection();
+    // Set pin mode to send out signal
+    pinMode(RELAY_PIN, OUTPUT); 
+    // Ensure the relay is off initially
+    digitalWrite(RELAY_PIN, LOW); 
+}
 
 void loop()
 {
