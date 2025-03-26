@@ -18,6 +18,7 @@ The project was tested on a system with the following components:
 - NodeMCU-32S ESP32 WiFi+Bluetooth Development Board
 - DHT11 sensor
 - Sen0193 capacitive soil moisture sensor
+- SRD-05VDC-SL-C relay
 
 ### Web application
 
