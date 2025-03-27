@@ -9,7 +9,9 @@
  * connection and TLS);
  * - Connect the MQTT client (using server-certificate validation, SAS-tokens for client
  * authentication);
- * - Periodically send telemetry data to the Azure IoT Hub.
+ * - Collect 3 readings from 2 sensors;
+ * - Periodically send telemetry data to the Azure IoT Hub;
+ * - Switch activation state of the relay if need be.
  */
 
 // C99 libraries
@@ -144,18 +146,6 @@ static void initializeTime()
     }
     Serial.println("");
     Logger.Info("Time initialized!");
-}
-
-void receivedCallback(char *topic, byte *payload, unsigned int length)
-{
-    Logger.Info("Received [");
-    Logger.Info(topic);
-    Logger.Info("]: ");
-    for (int i = 0; i < length; i++)
-    {
-        Serial.print((char)payload[i]);
-    }
-    Serial.println("");
 }
 
 #if defined(ESP_ARDUINO_VERSION_MAJOR) && ESP_ARDUINO_VERSION_MAJOR >= 3
@@ -413,7 +403,7 @@ void readSensorData()
     }
     else
     {
-        Serial.print("\nTemp Value: ");
+        Serial.print("Temp Value: ");
         Serial.print(sensorInstance.temp);
         Serial.println(" C");
     }
@@ -425,15 +415,15 @@ void readSensorData()
     }
     else
     {
-        Serial.print("\nhumid Value: ");
+        Serial.print("Humidity Value: ");
         Serial.print(sensorInstance.humid);
         Serial.println(" %");
     }
 
     // TODO: Add some checks for Moisture
-    Serial.print("Moisture value: ");
+    Serial.print("Moisture Value: ");
     Serial.println(soilAnaValue);
-    Serial.print("Moisture percentage: ");
+    Serial.print("Moisture Percentage: ");
     Serial.print(soilAnaPercentage);
     Serial.println("%");
 }
