@@ -18,12 +18,17 @@ The project was tested on a system with the following components:
 - NodeMCU-32S ESP32 WiFi+Bluetooth Development Board
 - DHT11 sensor
 - Sen0193 capacitive soil moisture sensor
+- SRD-05VDC-SL-C relay
 
 ### Web application
 
 The `web-app` directory is a FastAPI application that reads messages sent to the IoT Hub and displays them onto a webpage.
 
 ![1742403594276](image/README/1742403594276.png)
+
+## Usage notice 
+
+- The microcontroller must be connected to a 2.4 GHz WiFi connection. For Windows laptops and mobile devices, you can enable Mobile Hotspot, adjust the Network band, and connect your ESP to there. 
 
 ## Credits
 
