@@ -13,9 +13,9 @@ from contextlib import asynccontextmanager
 from libs.iot_hub_reader import receive_events_from_iothub
 
 # Check required environment variables
-if load_dotenv():
-    iot_hub_connection_string = os.getenv('IotHubConnectionString')
-    event_hub_consumer_group = os.getenv('EventHubConsumerGroup')
+load_dotenv()
+iot_hub_connection_string = os.getenv('IotHubConnectionString')
+event_hub_consumer_group = os.getenv('EventHubConsumerGroup')
 if not iot_hub_connection_string:
     print("Environment variable IotHubConnectionString must be specified.")
     exit(1)
@@ -126,4 +126,4 @@ async def root():
     return FileResponse("public/index.html")
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=3000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
