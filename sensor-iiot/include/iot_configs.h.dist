@@ -59,6 +59,3 @@
 #ifndef IOT_CONFIG_USE_X509_CERT
 #define IOT_CONFIG_DEVICE_KEY "Device Key"
 #endif // IOT_CONFIG_USE_X509_CERT
-
-// Publish 1 message every 2 seconds
-#define TELEMETRY_FREQUENCY_MILLISECS 15000
