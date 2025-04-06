@@ -370,11 +370,11 @@ void readSoilMoisture()
     soilAnaValue = analogRead(MOISTURE_PIN);
     if (soilAnaValue > AIR_VALUE)
     {
-        soilAnaPercentage = 100;
+        soilAnaPercentage = 0;
     }
     else if (soilAnaValue < WATER_VALUE)
     {
-        soilAnaPercentage = 0;
+        soilAnaPercentage = 100;
     }
     else
     {

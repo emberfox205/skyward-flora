@@ -85,4 +85,3 @@ jobs:
         with:
           app-name: 'planttocloud'
           slot-name: 'Production'
-          
